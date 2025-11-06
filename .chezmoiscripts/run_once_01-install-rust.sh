@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/utils.sh"
 
 set -Eeuo pipefail
 
@@ -7,6 +8,7 @@ if [ "${DOTFILES_DEBUG:-}" ]; then
 fi
 
 function install_rust() {
+    assert_installed "rustup"
     # Install rust using rustup
     # ref. https://www.rust-lang.org/tools/install
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path

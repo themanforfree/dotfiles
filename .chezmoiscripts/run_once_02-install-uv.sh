@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source "$(dirname "${BASH_SOURCE[0]}")/utils.sh"
 
 set -Eeuo pipefail
 
@@ -7,6 +8,7 @@ if [ "${DOTFILES_DEBUG:-}" ]; then
 fi
 
 function install_uv() {
+    assert_installed "uv"
     # https://docs.astral.sh/uv/getting-started/installation/#standalone-installer
     curl -LsSf https://astral.sh/uv/install.sh | sh
 }
