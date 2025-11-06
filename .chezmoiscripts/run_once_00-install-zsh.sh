@@ -10,11 +10,11 @@ fi
 function install_zsh() {
     assert_installed "zsh"
     # Install zsh using homebrew
-    brew install zsh
+    package_install "zsh"
 }
 
 function uninstall_zsh() {  
-    brew uninstall zsh
+    package_remove "zsh"
 }
 
 function main() {
