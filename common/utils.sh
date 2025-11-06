@@ -7,7 +7,6 @@ function assert_installed() {
 
 function package_install() {
     package_name="${1:-}"
-    info "Installing ${package_name}"
     if command -v apt >/dev/null 2>&1; then
         sudo apt update && sudo apt install -y ${package_name}
     elif command -v pacman >/dev/null 2>&1; then

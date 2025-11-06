@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
-source "$(dirname "${BASH_SOURCE[0]}")/../common/utils.sh"
-
 set -Eeuo pipefail
 
 if [ "${DOTFILES_DEBUG:-}" ]; then
     set -x
 fi
 
+{{ include "common/utils.sh" }}
+
+
+# https://docs.astral.sh/uv/getting-started/installation/#standalone-installer
 function install_uv() {
     assert_installed "uv"
-    # https://docs.astral.sh/uv/getting-started/installation/#standalone-installer
+    info "Installing uv"
     curl -LsSf https://astral.sh/uv/install.sh | sh
 }
 
+# https://docs.astral.sh/uv/getting-started/installation/#uninstallation
 function uninstall_uv() {
-    # https://docs.astral.sh/uv/getting-started/installation/#uninstallation
     uv cache clean
     rm -rf "$(uv python dir)"
     rm -rf "$(uv tool dir)"

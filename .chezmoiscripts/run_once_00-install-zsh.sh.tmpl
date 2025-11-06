@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-source "$(dirname "${BASH_SOURCE[0]}")/../common/utils.sh"
-
 set -Eeuo pipefail
 
 if [ "${DOTFILES_DEBUG:-}" ]; then
     set -x
 fi
 
+{{ include "common/utils.sh" }}
+
 function install_zsh() {
     assert_installed "zsh"
-    # Install zsh using homebrew
+    info "Installing zsh"
     package_install "zsh"
 }
 

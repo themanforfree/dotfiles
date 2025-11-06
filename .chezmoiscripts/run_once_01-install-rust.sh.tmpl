@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-source "$(dirname "${BASH_SOURCE[0]}")/../common/utils.sh"
-
 set -Eeuo pipefail
 
 if [ "${DOTFILES_DEBUG:-}" ]; then
     set -x
 fi
 
+{{ include "common/utils.sh" }}
+
+
+# ref. https://www.rust-lang.org/tools/install
 function install_rust() {
     assert_installed "rustup"
-    # Install rust using rustup
-    # ref. https://www.rust-lang.org/tools/install
+    info "Installing rust"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 }
 
